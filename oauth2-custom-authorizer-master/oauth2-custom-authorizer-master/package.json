@@ -1,0 +1,51 @@
+{
+    "name": "oauth2-custom-authorizer",
+    "version": "1.0.0",
+    "author": "Bruno Brito",
+    "license": "MIT",
+    "description": "OAuth 2.0 Custom Authorizer for AWS API Gateway. It validate bearer tokens. Both JWT Token and Reference Token",
+    "main": "index.js",
+    "repository": {
+        "url": "git+https://github.com/brunohbrito/oauth2-custom-authorizer.git",
+        "type": "git"
+    },
+    "bugs": {
+        "url": "https://github.com/brunohbrito/oauth2-custom-authorizer/issues"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/lambda-local --timeout 300 -l dist/index.js -h handler -e test/event.json",
+        "build": "tsc",
+        "zip": "mkdir publish && rm -f publish/lambda-oauth2-jwt-authorizer.zip ; zip build/lambda-oauth2-jwt-authorizer.zip -r dist/**/*.js *.json .env node_modules/",
+        "start": "./node_modules/.bin/lambda-local --timeout 300 -l index.js -h handler -e test/event.json"
+    },
+    "keywords": [
+        "oauth2",
+        "aws",
+        "custom-authorizer",
+        "access-token",
+        "bearer",
+        "token",
+        "oauth",
+        "jwt",
+        "oidc",
+        "openid_connect",
+        "identityserver4"
+    ],
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.47",
+        "@types/lodash": "^4.14.149",
+        "gulp": "^4.0.2",
+        "gulp-clean": "^0.4.0",
+        "gulp-install": "^1.1.0",
+        "lambda-local": "^1.7.1",
+        "tslint": "^6.1.1",
+        "typescript": "^3.8.3",
+        "zip-a-folder": "0.0.12"
+    },
+    "dependencies": {
+        "@types/node": "^13.11.0",
+        "dotenv": "^8.2.0",
+        "lodash": "^4.17.15",
+        "node-accesstoken-validation": "^1.0.4"
+    }
+}
